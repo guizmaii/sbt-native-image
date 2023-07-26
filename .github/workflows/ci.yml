@@ -38,14 +38,13 @@ jobs:
       - name: sbt test plugin/scripted
         if: ${{ matrix.os == 'windows-latest' }}
         env:
-          NATIVE_IMAGE_COMMAND: native-image.cmd
-        shell: bash
+          NATIVE_IMAGE_COMMAND: native-image
         run: |
           # Copied from https://github.com/graalvm/setup-graalvm#quickstart-template
           echo "GRAALVM_HOME: $GRAALVM_HOME"
           echo "JAVA_HOME: $JAVA_HOME"
           java --version
-          native-image.cmd --version
+          native-image --version
           sbt test plugin/scripted
 
       # - name: sbt test
